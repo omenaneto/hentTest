@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Hent - Pagamentos</title>
+    
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="modal hidden" id="modal">
+            <div class="window">
+                <h2>Enviar mensagem?</h2>
+                <p>Ao enviar, o cliente vai receber um email contendo sua mensagem</p>
+                <button class="btn" id="confirm-send">Enviar</button>
+            </div>
+            <div class="black-curtain" id="black-curtain"></div>
+        </div>
+        
+        <!-- MENU -->
+
+        <div class="mobile-menu desktop-hidden">
+            <i class="fa fa-bars sandwich-btn" id="menu-bt" job="showMenu"></i>
+            <img class="logo-mobile" src="img/logohent.svg" alt="Logo">
+            <i class="fa fa-inbox" id="sidebar-bt" job="showMessages"></i>
+        </div>
+        <div class="menu mobile-hidden" id="main-menu">
+            
+            <div class="menu-head">
+
+                <img src="img/logohentWhite.svg" alt="Logo Hent" class="logo">
+                
+                <i class="fa fa-close close-menu desktop-hidden" id="close-menu-bt" job="closeMenu"></i>
+                
+            
+            </div>
+            <ul>
+                <li > <a href="#"><div class="menu-item"><img src="img/icons/VectorvisaoGeral.svg" alt="Visão Geral"> Visão Geral</div></a> </li>
+                <li> <a href="#"><div  class="menu-item"><img src="img/icons/Vectorcontatos.svg" alt="Contratos"> Contratos</div></a> </li>
+                <li> <a href="#" class="selected-item"><div  class="menu-item"><img src="img/icons/Vectorpagamentos.svg" alt="Pagamento"> Pagamentos</div></a> </li>
+                <li> <a href="#"><div  class="menu-item"><img src="img/icons/Vectorclientes.svg" alt="Clientes"> Clientes</div></a> </li>      
+            </ul>
+            <a href="#"><div class="logout-link">Logout</div></a>
+            
+        </div>
+        <!-- Fim do MENU -->
+
+        <!-- CONTEÚDO CENTRAL -->
+        <div class="main">
+
+            <div class="content">
+
+                <div class="left">
+                    
+                    <ul class="hist-nevegation">
+                        <li class="nav-bt">Contratos</li>
+                        <li class="nav-bt"> <i class="fa fa-chevron-right"></i></li>
+                        <li class="nav-bt">Contrato #10</li>
+                        <li class="nav-bt"><i class="fa fa-chevron-right"></i></li>
+                        <li class="nav-bt">Pagamentos</li>
+                    </ul>
+                    
+                    <h1 class="page-title">Pagamento do Mês de <span id='payment-month'></span></h1>
+                    
+                    <ul class="page-atributes">
+                        <li class="atribute-item"> <img src="img/icons/Vectorpreco.svg" alt="Preço"></span></li>
+                        <li class="atribute-item"> <span id="payment-amount">R$ -,--</span></li>
+                        <li class="atribute-item"> <img src="img/icons/Vectorcalendario.svg" alt="Vencimento"> </li>
+                        <li class="atribute-item"> <span id="due-date">----- --/--/----</span></li>
+                        <li class="atribute-item"> <i alt="Pago" id="status-icon" class="fa fa-check-circle"></i></li>
+                        <li class="atribute-item"> <span id="payment-status">----</span></li>
+                    </ul>
+
+                    <div class="info">
+                        
+                        <ul class="info-items">
+                            <li class="info-item"><h2> Detalhes do comprador</h2></li>
+                            <li class="info-item">
+                                <span class="entry-name">Nome</span>
+                                <span id="name-payer">Beltrano de tal</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="entry-name">Email</span>
+                                <span id="email-payer">fulano@exemple.org</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="entry-name">Telefone</span>
+                                <span id="phone-payer">81 9912-0980</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="entry-name">Contrato</span>
+                                <span id="link-payer"><a href="#">Ver Contrato Sala 01 - James</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="right">
+                    <button class="btn download" id="download-bt" ><img src="img/icons/sm-qrcodeqrcode.svg" alt="QR Code"> Baixar Boleto</button>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Fim do CONTEÚDO CENTRAL -->
+
+        <!-- BARRA LATERAL -->
+        <div class="sidebar mobile-hidden" id="sidebar">
+
+            <div class="messages-timeline">
+                
+                <div class="sidebar-head">
+                    
+                    
+                    <h3>Timeline e Solicitações</h3>
+                    <i class="fa fa-close close-menu desktop-hidden" id="close-sidebar-bt" job="close-sidebar"></i>
+                
+                </div>
+
+                <div class="timeline">
+
+                    <ul class="messages" id="messages">
+                        
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="input-fields">
+
+                <div class="filter">
+                    <input type="checkbox" name="filterMessages" id="filter-messages" class="filter-messages"> <p>Mostrar apenas mensagens</p>
+                </div>
+                <h3>Mensagem</h3>
+
+                    <textarea name="message" class="message-input" id="message-input" cols="30" rows="10"></textarea>
+                    <button  class="btn send-message" id="send-message-bt">Enviar email</button>
+                
+               
+            </div>
+
+        </div>
+        <!-- Fim da BARRA LATERAL -->
+    </div>
+    
+    <script src="js/script.js"></script>
+    <script src="js/mobile.js"></script>
+</body>
+</html>

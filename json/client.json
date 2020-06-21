@@ -1,0 +1,14 @@
+{
+	"id": ":id",
+	"status": "cancelled",
+	"total_amount_in_cents": 722609,
+	"effective_at": "2020-06-15",
+	"due_at": "2020-06-06",
+	"barcode_number": "75101467945062922517876189897254418645797921",
+	"paid_amount_in_cents": null,
+	"contract": {
+		"id": "9b83b4a0-0f85-4bef-9ae7-e7ad83350b75",
+		"place": "84831 Lindsay Falls, Tiarachester, GA 27657-7500"
+	},
+	"payer": { "name": "Brad Rath Sr.", "email": "earnestine_krajcik@cummerata.io", "phone_number": "191.336.8674" }
+}
