@@ -24,9 +24,9 @@ const confirmSend = document.getElementById('confirm-send');
 
 //API =======================================================================
 const apiURL = 'https://desolate-temple-06848.herokuapp.com/';
-const GETclient = apiURL + 'payments/:id';
-const GETnotifications = apiURL + 'payments/:id/notifications';
-const POSTmessage = apiURL + 'payments/:id/message';
+const GETclient = apiURL + 'payments/123';
+const GETnotifications = apiURL + 'payments/123/notifications';
+const POSTmessage = apiURL + 'payments/123/notifications';
 
 // FIM DA API================================================================
 
@@ -65,10 +65,7 @@ const timeFormater = (time) => {
 
 //PREENCHER INFORMAÇÕES DO CLIENTE
 const getClientData = async () => {
-	const fetchOptions = {
-		method : 'GET',
-	};
-	const response = await fetch('json/client.json'); //Mudar para await fetch(GETclient, fetchOptions);
+	const response = await fetch(GETclient);
 	const data = await response.json();
 
 	//  Converter Pagamento de centavos para Real
@@ -221,7 +218,7 @@ const loadBoxes = (array) => {
 };
 
 const getNotificationData = async () => {
-	const response = await fetch('json/notifications.json');
+	const response = await fetch(GETnotifications);
 	const data = await response.json();
 
 	//carregar mensagens da API
@@ -231,11 +228,10 @@ const getNotificationData = async () => {
 const sendMessage = async (messagedata) => {
 	const fetchOptions = {
 		method  : 'POST',
-		body    : JSON.stringify(messagedata),
-		headers : { 'Content-Type': 'application/json' },
+		body    : messagedata.value,
+		headers : { 'Content-Type': 'application/x-www-form-urlencoded' },
 	};
-	const response = await fetch('json/client.json'); //Mudar para await fetch(POSTmessage, fetchOptions);
-	const data = await response.json();
+	const response = await fetch(POSTmessage, fetchOptions); //Mudar para await fetch(POSTmessage, fetchOptions);
 };
 
 // FIM DA SIDEBAR (MENSAGENS) ===============================================
@@ -262,18 +258,9 @@ sendMessageBtn.addEventListener('click', (e) => {
 	modal.classList.toggle('hidden');
 });
 confirmSend.addEventListener('click', (e) => {
-	const data = {
-		id         : 'a1b8fb2f-784c-461f-b2ad-520e2d0316f5',
-		kind       : 'outbound_message',
-		body       : messageInput.value,
-		created_at : '2020-06-13T20:18:28-03:00',
-		opened_at  : null,
-		payment_id : '22345544-343455-332244',
-	};
-
 	sendMessage(messageInput)
 		.then((response) => {
-			console.log('Consegiu carregar notificações e mensagens da API');
+			console.log('Consegiu POST');
 		})
 		.catch((error) => {
 			console.error(error);
